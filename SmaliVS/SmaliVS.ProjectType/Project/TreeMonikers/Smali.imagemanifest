@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ImageManifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                           xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                           xmlns="http://schemas.microsoft.com/VisualStudio/ImageManifestSchema/2014">
+  <Symbols>
+    <String Name="Resources" Value="/SmaliVS;Component/" />
+    <Guid Name="SmaliGuid" Value="72b420ef-4dac-4bd3-a7e3-4fb91b739973" />
+    <ID Name="ProjectIcon" Value="0" />
+  </Symbols>
+  <Images>
+    <Image Guid="$(SmaliGuid)" ID="$(ProjectIcon)">
+      <Source Uri="$(Resources)/Project/TreeMonikers/Images/SmaliProjectIcon.xaml" />
+      <Source Uri="$(Resources)/Project/TreeMonikers/Images/SmaliProjectIcon.png" >
+        <Size Value="16" />
+      </Source>  
+    </Image>
+  </Images>
+  <ImageLists />
+</ImageManifest>
