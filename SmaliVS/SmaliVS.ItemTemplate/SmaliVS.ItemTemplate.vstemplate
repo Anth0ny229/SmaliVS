@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
+  <TemplateData>
+    <Name>Smali Code File</Name>
+    <Description>Smali code file</Description>
+    <Icon>Smali.ico</Icon>
+    <TemplateID>50eac656-3940-4acc-97a3-f02a3fee2fbc</TemplateID>
+    <ProjectType>Smali</ProjectType>
+    <NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+    <DefaultName>Class.smali</DefaultName>
+  </TemplateData>
+  <TemplateContent>
+    <ProjectItem ReplaceParameters="true">Class.smali</ProjectItem>
+  </TemplateContent>
+</VSTemplate>

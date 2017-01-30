@@ -177,6 +177,13 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SmaliVS.ItemTemplate\SmaliVS.ItemTemplate.csproj">
+      <Project>{27d6e4d1-3dcb-4427-a8e6-fcdc4d88d25d}</Project>
+      <Name>SmaliVS.ItemTemplate</Name>
+      <VSIXSubPath>ItemTemplates</VSIXSubPath>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
+    </ProjectReference>
     <ProjectReference Include="..\SmaliVS.ProjectTemplate\SmaliVS.ProjectTemplate.csproj">
       <Project>{7f944d3b-b0f0-483d-8b7e-40118cb6c7b5}</Project>
       <Name>SmaliVS.ProjectTemplate</Name>
@@ -373,6 +380,7 @@
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
   </ItemGroup>
+
   <ItemGroup>
     <None Include="BuildSystem\Rules\ProjectItemsSchema.xaml">
       <SubType>Designer</SubType>
@@ -436,6 +444,7 @@
       <SubType>Designer</SubType>
     </XamlPropertyRule>
   </ItemGroup>
+
   <ItemGroup>
     <Page Include="BuildSystem\Rules\general.browseobject.xaml">
       <Generator>MSBuild:Compile</Generator>

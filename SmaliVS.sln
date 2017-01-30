@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmaliVS.ProjectType", "Smal
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmaliVS.ProjectTemplate", "SmaliVS\SmaliVS.ProjectTemplate\SmaliVS.ProjectTemplate.csproj", "{7F944D3B-B0F0-483D-8B7E-40118CB6C7B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmaliVS.ItemTemplate", "SmaliVS\SmaliVS.ItemTemplate\SmaliVS.ItemTemplate.csproj", "{27D6E4D1-3DCB-4427-A8E6-FCDC4D88D25D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7F944D3B-B0F0-483D-8B7E-40118CB6C7B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F944D3B-B0F0-483D-8B7E-40118CB6C7B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F944D3B-B0F0-483D-8B7E-40118CB6C7B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27D6E4D1-3DCB-4427-A8E6-FCDC4D88D25D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27D6E4D1-3DCB-4427-A8E6-FCDC4D88D25D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27D6E4D1-3DCB-4427-A8E6-FCDC4D88D25D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27D6E4D1-3DCB-4427-A8E6-FCDC4D88D25D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
