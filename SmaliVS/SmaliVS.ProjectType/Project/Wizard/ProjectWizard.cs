@@ -62,9 +62,9 @@ namespace SmaliVS.Project.Wizard
 
             // Display a form to the user. The form collects
             _wizardWindow = new WizardWindow(destDir);
-            // if (wizardWindow.ShowDialog() != DialogResult.OK)
-            //throw new WizardCancelledException("User cancelled");
-            _wizardWindow.ShowDialog();
+            if (_wizardWindow.ShowDialog() != DialogResult.OK)
+                throw new WizardCancelledException("User cancelled");
+            //_wizardWindow.ShowDialog();
 
             var apkPath = _wizardWindow.TextResult;
 
