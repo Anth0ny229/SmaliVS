@@ -2,7 +2,7 @@
 
 SmaliVS is a Visual Studio project and language extension for the smali file type. Smali is the disassembly output from APK's using the smali\baksmali tools.
 
-Using this extension will allow you to dump an apk form your device. It will automatally dissasemble the apk and create a Visual Studio Project. From there you can modify the .smali files from within Visual Studio, then use Visual Studios Build\Deploy to reinstall the modified apk. This extension uses ApkTool as well as smali\baksmali to do the important work with the apks and is already packaged with the extension. Java is a requirement and java should be added to your environment variables.
+Using this extension will allow you to dump an apk form your device. It will automatally dissasemble the apk and create a Visual Studio Project. From there you can modify the .smali files from within Visual Studio, then use Visual Studios Build\Deploy to reinstall the modified apk. This extension uses ApkTool as well as smali\baksmali to do the important work with the apks and is already packaged with the extension. Java is a requirement and java should be added to your environment variables. Basic usage instructions can be found on the [wiki](https://github.com/Anth0ny229/SmaliVS/wiki) page
 
 #### Features
 - Apk dumping from connected device
