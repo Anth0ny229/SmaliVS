@@ -29,6 +29,6 @@ Using this extension will allow you to dump an apk form your device. It will aut
 - [Types, Methods and Fields wiki page](https://github.com/JesusFreke/smali/wiki/TypesMethodsAndFields)
 - [Official dex format reference](https://source.android.com/devices/tech/dalvik/dex-format.html)
 
-### Special Thanks
+#### Special Thanks
 - JesusFreke (smali\baksmali)
 - iBotPeaches (ApkTool)
