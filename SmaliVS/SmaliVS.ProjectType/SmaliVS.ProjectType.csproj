@@ -259,6 +259,10 @@
     </Content>
     <None Include="source.extension.vsixmanifest" />
     <None Include="Key.snk" />
+    <Content Include="Smali.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="Tools\7za.dll">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
@@ -444,7 +448,6 @@
       <SubType>Designer</SubType>
     </XamlPropertyRule>
   </ItemGroup>
-
   <ItemGroup>
     <Page Include="BuildSystem\Rules\general.browseobject.xaml">
       <Generator>MSBuild:Compile</Generator>

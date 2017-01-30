@@ -19,6 +19,7 @@ namespace SmaliVS
     [ProvideAutoLoad(UIContextGuids.NoSolution)]
     [ProvideAutoLoad(UIContextGuids.SolutionExists)]
     [PackageRegistration(UseManagedResourcesOnly = true)]
+    [InstalledProductRegistration(PackageName, PackageDescription, "1.0")] // Info on this package for Help/About 
     [Description("A custom project type based on CPS")]
     [Guid(PackageGuid)]
     public sealed class VsPackage : Package
@@ -44,6 +45,16 @@ namespace SmaliVS
         /// resource names can be calculated for embedded resources.
         /// </summary>
         internal const string DefaultNamespace = "Smali";
+
+        /// <summary>
+        /// Package name
+        /// </summary>
+        private const string PackageName = "SmaliVS";
+
+        /// <summary>
+        /// Package description
+        /// </summary>
+        private const string PackageDescription = "SmaliVS is a Visual Studio project and language extension for the smali file type.";
 
         public static string ExtensionDirectory { get; private set; }
         public static string ExtensionToolsDirectory { get; private set; }
