@@ -6,22 +6,22 @@
 	PageTemplate="generic"
 	Description="General"
 	xmlns="http://schemas.microsoft.com/build/2009/properties">
-	<Rule.Categories>
-		<Category Name="General" DisplayName="General" Description="General" />
-	</Rule.Categories>
-	<Rule.DataSource>
-		<DataSource Persistence="ProjectFile" Label="Configuration" />
-	</Rule.DataSource>
-	<StringListProperty Name="ProjectTypeGuids" Visible="False" />
-	<StringProperty Name="ProjectGuid" Visible="False">
-		<StringProperty.DataSource>
-			<DataSource Persistence="ProjectFile" Label="Globals" HasConfigurationCondition="False" />
-		</StringProperty.DataSource>
-	</StringProperty>	
-	<StringProperty Name="Name" />
-	<StringProperty Name="OutputName" />
-	<StringProperty Name="OutputPath" />
-	  <StringProperty Name="MSBuildProjectDirectory" Visible="false"/>
+  <Rule.Categories>
+    <Category Name="General" DisplayName="General" Description="General" />
+  </Rule.Categories>
+  <Rule.DataSource>
+    <DataSource Persistence="ProjectFile" Label="Configuration" />
+  </Rule.DataSource>
+  <StringListProperty Name="ProjectTypeGuids" Visible="False" />
+  <StringProperty Name="ProjectGuid" Visible="False">
+    <StringProperty.DataSource>
+      <DataSource Persistence="ProjectFile" Label="Globals" HasConfigurationCondition="False" />
+    </StringProperty.DataSource>
+  </StringProperty>
+  <StringProperty Name="Name" />
+  <StringProperty Name="OutputName" />
+  <StringProperty Name="OutputPath" />
+  <StringProperty Name="MSBuildProjectDirectory" Visible="false"/>
   <StringProperty Name="PackageAction" Visible="false" Description="The MSBuild target to use when packaging a project." />
   <StringProperty Name="DefaultContentType" Visible="false" Description="The default content type name to use when adding files." />
   <BoolProperty Name="ShowAllFiles" Visible="False">
@@ -34,15 +34,25 @@
       <DataSource Persistence="UserFile" HasConfigurationCondition="False" />
     </BoolProperty.DataSource>
   </BoolProperty>
-    <StringProperty Name="SourceApk" ReadOnly="True"/>
+  <StringProperty Name="SourceApk" Subtype="File">
+    <StringProperty.ValueEditors>
+      <ValueEditor EditorType="FilePropertyEditor" DisplayName="&lt;Browse...&gt;"/>
+    </StringProperty.ValueEditors>
+    <StringProperty.Metadata>
+      <NameValuePair Name="Filter" Value="Android Package (*.apk)|*.apk" />
+    </StringProperty.Metadata>
+  </StringProperty>
+  <StringProperty Name="SourceDirectory" Subtype="Folder"/>
   <BoolProperty Name="ZipAlign" Description="Should zipalign be called to make sure the apk is optimized" />
-    <EnumProperty Name="SignType"
+
+  <EnumProperty Name="SignType"
                   DisplayName="Signature Type"
                   Description="Signing method for APK">
-        <EnumValue Name="SignOrig" DisplayName="Original Signature" Description="Keep original signature" />
-        <EnumValue Name="SignOrigManifest" DisplayName="Original Signature &amp; Manifest" Description="Keep original signature and android manifest" />
-        <EnumValue Name="SignTest" DisplayName="Sign with Testkeys" Description="Sign with Testkeys" />
-        <EnumValue Name="SignNone" DisplayName="Unsigned" Description="Create unsigned apk" />
-        <EnumValue Name="SignNoneManifest" DisplayName="Unsigned &amp; Manifest" Description="Create unsigned apk with original android manifest" />
-    </EnumProperty>
+    <EnumValue Name="SignOrig" DisplayName="Original Signature" HelpString="Keep original signature" />
+    <EnumValue Name="SignOrigManifest" DisplayName="Original Signature &amp; Manifest" HelpString="Keep original signature and android manifest" />
+    <EnumValue Name="SignTest" DisplayName="Sign with Testkeys" HelpString="Sign with Testkeys" />
+    <EnumValue Name="SignNone" DisplayName="Unsigned" HelpString="Create unsigned apk" />
+    <EnumValue Name="SignNoneManifest" DisplayName="Unsigned &amp; Manifest" HelpString="Create unsigned apk with original android manifest" />
+  </EnumProperty>
+
 </Rule>

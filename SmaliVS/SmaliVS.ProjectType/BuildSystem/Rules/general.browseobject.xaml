@@ -6,17 +6,25 @@
 	PageTemplate="generic"
 	Description="General"
 	xmlns="http://schemas.microsoft.com/build/2009/properties">
-	<Rule.Categories>
-		<Category Name="General" DisplayName="General" Description="General" />
-	</Rule.Categories>
-	<Rule.DataSource>
-		<DataSource Persistence="ProjectFile" Label="Configuration" HasConfigurationCondition="false" />
-	</Rule.DataSource>
-	<StringProperty Name="Name" />
-	<StringProperty Name="OutputName" />
-	<StringProperty Name="FullPath" ReadOnly="True">
-		<StringProperty.DataSource>
-			<DataSource Persistence="ProjectFile" PersistedName="MSBuildProjectFullPath" />
-		</StringProperty.DataSource>
-	</StringProperty>
+  <Rule.Categories>
+    <Category Name="General" DisplayName="General" Description="General" />
+  </Rule.Categories>
+  <Rule.DataSource>
+    <DataSource Persistence="ProjectFile" Label="Configuration" HasConfigurationCondition="false" />
+  </Rule.DataSource>
+  <StringProperty Name="Name" />
+  <StringProperty Name="OutputName" />
+  <StringProperty Name="SourceApk" Subtype="File">
+    <StringProperty.ValueEditors>
+      <ValueEditor EditorType="FilePropertyEditor" DisplayName="&lt;Browse...&gt;"/>
+    </StringProperty.ValueEditors>
+    <StringProperty.Metadata>
+      <NameValuePair Name="Filter" Value="Android Package (*.apk)|*.apk" />
+    </StringProperty.Metadata>
+  </StringProperty>
+  <StringProperty Name="FullPath" ReadOnly="True">
+    <StringProperty.DataSource>
+      <DataSource Persistence="ProjectFile" PersistedName="MSBuildProjectFullPath" />
+    </StringProperty.DataSource>
+  </StringProperty>
 </Rule>

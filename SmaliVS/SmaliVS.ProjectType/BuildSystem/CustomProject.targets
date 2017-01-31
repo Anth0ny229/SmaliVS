@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|AnyCPU">
       <Configuration>Debug</Configuration>
@@ -54,7 +54,7 @@
     </PropertyPageSchema>
   </ItemGroup>
 
-  <Target Name="SignOrigManifest" Condition="'$(SignType)'=='SignOrigManifest'">
+  <Target Name="SignOrigManifest">
     <!--
     7za x -o"%~dp0projects/temp" "%~dp0place-apk-here-for-modding/%capp%" META-INF -r
     7za a -tzip "%~dp0place-apk-here-for-signing/unsigned%capp%" "%~dp0projects/temp/*" -mx%usrc% -r
@@ -63,7 +63,7 @@
     rmdir /S /Q "%~dp0projects/temp"
     rename "%~dp0place-apk-here-for-signing\unsigned%capp%" "OriginalSignedKey%capp%"
     -->
-    <Message Text="SignOrigManifest!" />
+    <Message Importance="High" Text="SignOrigManifest!" />
     <MakeDir Directories="$(MSBuildProjectDirectory)\$(OutputPath)\temp" />
     <Exec Command="&quot;$(SmaliExtensionDirectory)\Tools\7za&quot; x -o&quot;$(MSBuildProjectDirectory)\$(OutputPath)\temp&quot; &quot;$(SourceApk)&quot; META-INF -r"/>
     <Exec Command="&quot;$(SmaliExtensionDirectory)\Tools\7za&quot; a -tzip &quot;$(MSBuildProjectDirectory)\$(OutputPath)$(OutputName)&quot; &quot;$(MSBuildProjectDirectory)\$(OutputPath)\temp\*&quot; -mx9 -r"/>
@@ -72,62 +72,72 @@
     <Exec Command="rmdir /S /Q &quot;$(MSBuildProjectDirectory)\$(OutputPath)\temp&quot;"/>
   </Target>
 
-  <Target Name="SignOrig" Condition="'$(SignType)'=='SignOrig'">
+  <Target Name="SignOrig">
     <!--
     7za x -o"%~dp0projects/temp" "%~dp0place-apk-here-for-modding/%capp%" META-INF -r
     7za a -tzip "%~dp0place-apk-here-for-signing/unsigned%capp%" "%~dp0projects/temp/*" -mx%usrc% -r
     rmdir /S /Q "%~dp0projects/temp"
     rename "%~dp0place-apk-here-for-signing\unsigned%capp%" "OriginalSignedKey%capp%"
     -->
-    <Message Text="SignOrig!" />
+    <Message Importance="High" Text="SignOrig!" />
     <MakeDir Directories="$(MSBuildProjectDirectory)\$(OutputPath)\temp" />
     <Exec Command="&quot;$(SmaliExtensionDirectory)\Tools\7za&quot; x -o&quot;$(MSBuildProjectDirectory)\$(OutputPath)\temp&quot; &quot;$(SourceApk)&quot; META-INF -r"/>
     <Exec Command="&quot;$(SmaliExtensionDirectory)\Tools\7za&quot; a -tzip &quot;$(MSBuildProjectDirectory)\$(OutputPath)$(OutputName)&quot; &quot;$(MSBuildProjectDirectory)\$(OutputPath)\temp\*&quot; -mx9 -r"/>
     <Exec Command="rmdir /S /Q &quot;$(MSBuildProjectDirectory)\$(OutputPath)\temp&quot;"/>
   </Target>
 
-  <Target Name="SignNoneManifest" Condition="'$(SignType)'=='SignNoneManifest'">
+  <Target Name="SignNoneManifest">
     <!--
     7za x -o"%~dp0projects/temp" "%~dp0place-apk-here-for-modding/%capp%" AndroidManifest.xml -r
     7za a -tzip "%~dp0place-apk-here-for-signing/unsigned%capp%" "%~dp0projects/temp/AndroidManifest.xml" -mx%usrc% -r
     rmdir /S /Q "%~dp0projects/temp"
     -->
-    <Message Text="SignNoneManifest!" />
+    <Message Importance="High" Text="SignNoneManifest!" />
     <MakeDir Directories="$(MSBuildProjectDirectory)\$(OutputPath)\temp" />
     <Exec Command="&quot;$(SmaliExtensionDirectory)\Tools\7za&quot; x -o&quot;$(MSBuildProjectDirectory)\$(OutputPath)\temp&quot; &quot;$(SourceApk)&quot; AndroidManifest.xml -r"/>
     <Exec Command="&quot;$(SmaliExtensionDirectory)\Tools\7za&quot; a -tzip &quot;$(MSBuildProjectDirectory)\$(OutputPath)$(OutputName)&quot; &quot;$(MSBuildProjectDirectory)\$(OutputPath)\temp\AndroidManifest.xml&quot; -mx9 -r"/>
     <Exec Command="rmdir /S /Q &quot;$(MSBuildProjectDirectory)\$(OutputPath)\temp&quot;"/>
   </Target>
 
-  <Target Name="SignTest" Condition="'$(SignType)'=='SignTest'">
+  <Target Name="SignTest">
     <!--
     java -Xmx%heapy%m -jar signapk.jar -w testkey.x509.pem testkey.pk8 %~dp0place-apk-here-for-signing/unsigned%capp% %~dp0place-apk-here-for-signing/signed%capp%
     -->
-    <Message Text="SignTest!" />
+    <Message Importance="High" Text="SignTest!" />
     <Exec Command="java -Xmx1024m -jar &quot;$(SmaliExtensionDirectory)\Tools\signapk.jar&quot; -w &quot;$(SmaliExtensionDirectory)\Tools\testkey.x509.pem&quot; &quot;$(SmaliExtensionDirectory)\Tools\testkey.pk8&quot; &quot;$(MSBuildProjectDirectory)\$(OutputPath)$(OutputName)&quot; &quot;$(MSBuildProjectDirectory)\$(OutputPath)$(OutputName)&quot;"/>
   </Target>
 
-  <Target Name="SignNone" Condition="'$(SignType)'=='SignNone'">
-    <Message Text="SignNone!" />
+  <Target Name="SignNone">
+    <Message Importance="High" Text="SignNone!" />
   </Target>
 
-  <Target Name="ExecZipAlign" Condition="'$(ZipAlign)'=='true'">
+  <Target Name="ExecZipAlign" Condition=" '$(ZipAlign)'=='true' ">
     <Message Text="ExecZipAlign!" />
     <Exec Command="&quot;$(SmaliExtensionDirectory)\Tools\zipalign&quot; -f -v 4 &quot;$(MSBuildProjectDirectory)\$(OutputPath)$(OutputName)&quot; &quot;$(MSBuildProjectDirectory)\$(OutputPath)$(OutputName).align&quot;" />
     <Delete Files="$(MSBuildProjectDirectory)\$(OutputPath)$(OutputName)" />
     <Move SourceFiles="$(MSBuildProjectDirectory)\$(OutputPath)$(OutputName).align" DestinationFiles="$(MSBuildProjectDirectory)\$(OutputPath)$(OutputName)" />
   </Target>
 
+  <Choose>
+    <When Condition=" ( '$(SignType)'!='SignNone' And  '$(SignType)'!='SignTest' ) And !Exists( '$(SourceApk)' ) ">
+      <PropertyGroup>
+        <SignTarget>SignNone</SignTarget>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <SignTarget>$(SignType)</SignTarget>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+
   <Target Name="Build">
+    <Error Condition=" '$(SignTarget)' != $(SignType) " Text="To build using the original signature or maniifest the Apk Source must be specified in the project settings!" />
     <MakeDir Directories="$(OutputPath)" />
-    <Exec Command="java -Xmx1024m -jar &quot;$(SmaliExtensionDirectory)\Tools\apktool.jar&quot; b &quot;$(MSBuildProjectDirectory)&quot; -o &quot;$(MSBuildProjectDirectory)\$(OutputPath)$(OutputName)&quot;" />
-    <CallTarget Targets="ExecZipAlign" />   
-    <CallTarget Targets="SignOrigManifest" />    
-    <CallTarget Targets="SignOrig" />
-    <CallTarget Targets="SignNoneManifest" />
-    <CallTarget Targets="SignNone" />
-    <CallTarget Targets="SignTest" />
-    <Message Text="Done!" />
+    <Exec Command="java -Xmx1024m -jar &quot;$(SmaliExtensionDirectory)\Tools\apktool.jar&quot; b &quot;$(SourceDirectory)&quot; -o &quot;$(MSBuildProjectDirectory)\$(OutputPath)$(OutputName)&quot;" />
+    <CallTarget Targets="ExecZipAlign" />
+    <CallTarget Targets="$(SignTarget)" />
+    <Message Importance="High" Text="Done!" />
   </Target>
   <PropertyGroup>
     <RebuildDependsOn>

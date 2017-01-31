@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
+  <TemplateData>
+    <Name>Empty Smali Project</Name>
+    <Description>Smali Prject type without any files added. Useful if you plan on adding files later.</Description>
+    <Icon>Smali.ico</Icon>
+    <ProjectType>Smali</ProjectType>
+    <SortOrder>1</SortOrder>
+    <TemplateGroupID>Smali</TemplateGroupID>
+    <TemplateID>{c2eb5f0e-15c0-400c-a885-135753cf6f37}</TemplateID>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>EmptySmaliProject</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+  </TemplateData>
+  <TemplateContent>
+    <Project File="EmptyProject.smaliproj" ReplaceParameters="true">
+      <!-- 
+      These are the items which will show up when a new project is created using the custom project system.
+      Items referenced in here must also be referenced in the project file.
+      -->
+      <ProjectItem OpenInEditor="true" ReplaceParameters="true">Program.smali</ProjectItem>
+    </Project>
+  </TemplateContent>
+  <WizardExtension>
+    <Assembly>SmaliVS, Version=1.0.0.0, Culture=Neutral, PublicKeyToken=9be6e469bc4921f1</Assembly>
+    <FullClassName>SmaliVS.Project.Wizard.WizardImplementation</FullClassName>
+  </WizardExtension>
+  <WizardData >
+    <WizardArgs>
+      <ProjectType>EmptyProject</ProjectType>
+    </WizardArgs>
+  </WizardData>
+</VSTemplate>

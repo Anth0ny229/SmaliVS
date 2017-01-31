@@ -36,6 +36,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CopyVsixExtensionFiles>False</CopyVsixExtensionFiles>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -212,6 +213,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\ListViewColumnSorter.cs" />
+    <Compile Include="Project\PropertyEditors\FilePropertyEditor.cs" />
     <Compile Include="Project\TreeMonikers\AndroidMonikers.cs" />
     <Compile Include="Language\Classification\SmaliClassifierFormat.cs" />
     <Compile Include="Language\SmaliGrammar.cs" />
@@ -301,7 +303,7 @@
   The XAML files provide buth compile-time implementations for CPS rules as well as
   runtime information for property pages.  They will also be deployed as part of the
   final package.
-  -->
+-->
   <ItemGroup>
     <Content Include="BuildSystem\Rules\ProjectItemsSchema.xaml">
       <SubType>Designer</SubType>
@@ -384,7 +386,13 @@
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
   </ItemGroup>
-
+  <!--
+  <ItemGroup Condition="'$(BuildingInsideVisualStudio)' == 'false'">
+    <Content Include="BuildSystem\Rules\*.*">
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+  </ItemGroup>
+-->
   <ItemGroup>
     <None Include="BuildSystem\Rules\ProjectItemsSchema.xaml">
       <SubType>Designer</SubType>

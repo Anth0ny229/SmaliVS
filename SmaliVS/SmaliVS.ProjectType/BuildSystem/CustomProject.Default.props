@@ -6,8 +6,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <Name>$(MSBuildProjectName)</Name>
+    <OutputName>$(Name).apk</OutputName>
+    <SourceApk></SourceApk>
     <ZipAlign>true</ZipAlign>
-    <SignType>SignOrigManifest</SignType>
+    <SignType>SignNone</SignType>
+    <SourceDirectory>$(MSBuildProjectDirectory)</SourceDirectory>
   </PropertyGroup>
 
  <!-- <PropertyGroup Condition="'$(Configuration)'=='Debug'" Label="Configuration">

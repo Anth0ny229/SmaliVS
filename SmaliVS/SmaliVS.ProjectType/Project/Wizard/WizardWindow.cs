@@ -11,7 +11,7 @@ namespace SmaliVS.Project.Wizard
     public partial class WizardWindow : Form
     {
         readonly string _projectDir;
-        private ListViewColumnSorter _columnSorter;
+        private readonly ListViewColumnSorter _columnSorter;
 
         public WizardWindow(string projectDirectory)
         {

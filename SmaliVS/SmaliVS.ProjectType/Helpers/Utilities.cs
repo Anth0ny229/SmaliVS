@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 using SharpAdbClient;
 
 namespace SmaliVS.Helpers
@@ -104,6 +107,29 @@ namespace SmaliVS.Helpers
         {
             StartAdbServer();
             return AdbClient.Instance;
+        }
+
+        public static T DeserializeXml<T>(string xmlString)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(T));
+            using (var strReader = new StringReader(xmlString))
+                return (T)serializer.Deserialize(strReader);
+        }
+
+        public static T DeserializeXml<T>(Stream xmlStream)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(T));
+            return (T)serializer.Deserialize(xmlStream);
+        }
+
+
+        [DllImport("shlwapi.dll", EntryPoint = "PathRelativePathTo")]
+        public static extern bool PathRelativePathTo(StringBuilder lpszDst, string from, UInt32 attrFrom, string to, UInt32 attrTo);
+        public static string GetRelativePath(string from, string to)
+        {
+            StringBuilder builder = new StringBuilder(1024);
+            PathRelativePathTo(builder, from, 0, to, 0);
+            return builder.ToString();
         }
     }
 }
